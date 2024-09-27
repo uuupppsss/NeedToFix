@@ -18,9 +18,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ListView ItemsSource="{Binding }" 
-                  MouseDoubleClick="dClick"
-                  SelectedItem="{Binding }" Grid.Row="1" Grid.ColumnSpan="3">
+        <ListView ItemsSource="{Binding Students }" 
+                  SelectedItem="{Binding SelectedStudent}" Grid.Row="1" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Firstname}"/>
@@ -28,14 +27,14 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <ItemsControl DisplayMemberPath="Title" ItemsSource="{Binding }"/>
+                                <ItemsControl DisplayMemberPath="Title" ItemsSource="{Binding Task}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <ItemsControl DisplayMemberPath="TitleArticle" ItemsSource="{Binding }"/>
+                                <ItemsControl DisplayMemberPath="TitleArticle" ItemsSource="{Binding Chapter}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
