@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
@@ -10,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp13.Model;
 
 namespace WpfApp13
 {
@@ -27,6 +29,22 @@ namespace WpfApp13
         {
             InitializeComponent();
             DataContext = this;
+            new DB();
+
         }
+
+        private List<Student> students;
+        
+        public List<Student> Students
+        {
+            get => students;
+            set
+            {
+                students = value;
+                Signal();
+            }
+        }
+
+        public Student SelectedStudent {  get; set; }
     }
 }
