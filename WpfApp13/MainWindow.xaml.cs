@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -31,6 +32,11 @@ namespace WpfApp13
             DataContext = this;
             new DB();
 
+            var db = DBManager.Instance;
+            {
+                Students=db.Students.Include(s=>s.Tasks).ToList();
+            }
+
         }
 
         private List<Student> students;
@@ -45,6 +51,17 @@ namespace WpfApp13
             }
         }
 
-        public Student SelectedStudent {  get; set; }
+        private Student _selectedStudent;
+
+        public Student SelectedStudent
+        {
+            get => _selectedStudent;
+            set 
+            {
+                _selectedStudent = value;
+                Signal();
+            }
+        }
+
     }
 }
